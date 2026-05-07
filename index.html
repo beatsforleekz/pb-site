@@ -12,9 +12,7 @@
       --muted: #5f5a56;
       --accent: #C3ADA2;
       --line: #e9e3df;
-      --panel: #fbf9f8;
-      --max: 1180px;
-      --radius: 14px;
+      --max: 980px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,10 +22,15 @@
       color: var(--text);
       font-family: "Helvetica Neue", "Avenir Next", Avenir, "Segoe UI", sans-serif;
       -webkit-font-smoothing: antialiased;
+      scroll-behavior: smooth;
+    }
+
+    #about, #contact {
+      scroll-margin-top: 84px;
     }
 
     a { color: inherit; text-decoration: none; }
-    img { display: block; width: 100%; height: auto; }
+    img { display: block; max-width: 100%; height: auto; }
 
     .container {
       width: min(100% - 2.5rem, var(--max));
@@ -37,14 +40,13 @@
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 30;
-      background: rgba(255,255,255,0.96);
-      border-bottom: 1px solid var(--line);
+      z-index: 20;
+      background: rgba(255,255,255,0.97);
       backdrop-filter: blur(6px);
     }
 
     .header-inner {
-      min-height: 62px;
+      min-height: 68px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -52,29 +54,18 @@
     }
 
     .logo-link img {
-      width: clamp(58px, 8vw, 82px);
+      width: clamp(62px, 8vw, 84px);
       height: auto;
-    }
-
-    .nav-toggle {
-      display: none;
-      border: 1px solid var(--line);
-      background: #fff;
-      color: var(--text);
-      padding: 0.44rem 0.64rem;
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
     }
 
     .site-nav {
       display: flex;
       align-items: center;
-      gap: 1.15rem;
+      gap: 1.1rem;
     }
 
     .site-nav a {
-      font-size: 0.66rem;
+      font-size: 0.68rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: #4f4945;
@@ -84,358 +75,78 @@
     }
 
     .site-nav a:hover,
-    .site-nav a.active {
+    .site-nav a:focus-visible {
       color: var(--accent);
       border-color: var(--accent);
-    }
-
-    .page {
-      display: none;
-      min-height: calc(100vh - 62px);
-    }
-
-    .page.active { display: block; }
-
-    #home.page.active {
-      display: flex;
-      flex-direction: column;
-      min-height: calc(100vh - 62px - 56px);
-    }
-
-    #about.page.active {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      outline: none;
     }
 
     .hero {
-      min-height: 0;
-      flex: 1;
-      display: flex;
-      align-items: flex-start;
-      padding: 0 0 clamp(0.45rem, 1.3vw, 0.8rem);
-    }
-
-    .hero-grid {
+      padding: clamp(1.6rem, 3.2vw, 2.4rem) 0 clamp(0.35rem, 1.2vw, 0.7rem);
       display: grid;
-      gap: 0.35rem;
       justify-items: center;
       text-align: center;
-      width: 100%;
-      max-width: 920px;
-      margin: 0 auto;
+      gap: 0.7rem;
     }
 
-    .hero-image-wrap {
-      width: min(100%, 760px);
-      background: #ffffff;
-      padding: clamp(1rem, 3vw, 1.5rem);
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .hero-logo {
+      width: min(100%, 220px);
     }
 
-    .hero-image {
-      width: min(100%, 250px);
-      height: auto;
-      object-fit: contain;
-    }
-
-    h1, h2, h3 {
-      font-weight: 500;
+    h1, h2 {
+      font-weight: 400;
       letter-spacing: 0.01em;
     }
 
-    h1 { font-size: clamp(1.2rem, 2.1vw, 1.8rem); line-height: 1.22; font-weight: 400; }
-    h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
-    h3 { font-size: 1.06rem; }
-
-    .lead {
-      max-width: 74ch;
-      color: var(--muted);
-      line-height: 1.65;
+    h1 {
+      font-size: clamp(1.1rem, 2vw, 1.6rem);
+      line-height: 1.25;
     }
 
-    .quote {
-      font-size: clamp(1.08rem, 2.2vw, 1.42rem);
-      color: #3f3a37;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.75rem;
-      margin-top: clamp(1.2rem, 4.5vh, 2.8rem);
-    }
-
-    .btn {
-      border: 1px solid var(--text);
-      border-radius: 999px;
-      padding: 0.72rem 1.24rem;
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transition: color .2s ease, border-color .2s ease;
-    }
-
-    .btn:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-
-    .btn.ghost {
-      border-color: var(--line);
-      color: #615a55;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .stat {
-      text-align: center;
-      padding: 1.05rem 0.8rem;
-    }
-
-    .stat + .stat { border-left: 1px solid var(--line); }
-
-    .stat strong {
-      display: block;
-      font-size: clamp(1.5rem, 3vw, 2.5rem);
-      font-weight: 500;
-    }
-
-    .stat span {
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
+    h2 {
+      font-size: clamp(1.25rem, 2.5vw, 1.9rem);
     }
 
     .section {
-      padding: clamp(2.8rem, 6vw, 4.8rem) 0;
+      padding: clamp(2rem, 5vw, 3.6rem) 0;
+    }
+
+    .copy {
+      max-width: 78ch;
+      margin: 0 auto;
+      text-align: center;
     }
 
     .copy p {
       margin-top: 1rem;
-      max-width: 78ch;
       color: var(--muted);
       line-height: 1.82;
+      font-size: 1rem;
     }
 
-    #about .section {
-      width: 100%;
-      padding: clamp(1.6rem, 3.8vw, 3rem) 0;
-    }
-
-    #about .copy {
-      text-align: center;
+    .contact-wrap {
       display: grid;
-      justify-items: center;
-    }
-
-    .roster-grid {
-      margin-top: 1.3rem;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
-    }
-
-    .artist-card {
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      overflow: hidden;
-      background: #fff;
-      transition: border-color .2s ease, transform .2s ease;
-    }
-
-    .artist-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .artist-card img {
-      width: 100%;
-      aspect-ratio: 4/5;
-      object-fit: cover;
-    }
-
-    .artist-content {
-      padding: 0.9rem 1rem 1rem;
-      border-top: 1px solid var(--line);
-    }
-
-    .artist-content h3 {
-      font-size: 0.98rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .detail-link {
-      display: inline-block;
-      margin-top: 0.58rem;
-      font-size: 0.75rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #5d554f;
-      border-bottom: 1px solid transparent;
-    }
-
-    .detail-link:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-
-    .artist-page {
-      padding: clamp(2.3rem, 5vw, 3.7rem) 0 clamp(2.9rem, 6vw, 4.6rem);
-    }
-
-    .artist-layout {
-      display: grid;
-      grid-template-columns: minmax(260px, 390px) minmax(0, 1fr);
-      gap: 2rem;
-      align-items: start;
-    }
-
-    .artist-image {
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .block {
-      margin-top: 1.4rem;
-      padding-top: 1.2rem;
-      border-top: 1px solid var(--line);
-    }
-
-    .block h3 {
-      font-size: 0.82rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      margin-bottom: 0.75rem;
-    }
-
-    .block p {
-      color: var(--muted);
-      line-height: 1.78;
-    }
-
-    .inline-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      margin-top: 0.55rem;
-    }
-
-    .inline-links a {
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 0.42rem 0.72rem;
-    }
-
-    .inline-links a:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-
-    .playlist-embed {
-      width: 100%;
-      min-height: 152px;
-      border: 0;
-      border-radius: 12px;
-      display: block;
-    }
-
-    .socials {
-      display: flex;
-      gap: 0.66rem;
-      margin-top: 0.55rem;
-      flex-wrap: wrap;
-    }
-
-    .socials a {
-      width: 34px;
-      height: 34px;
-      border: 1px solid var(--line);
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: #5b534f;
-    }
-
-    .socials a:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-
-    .socials svg {
-      width: 16px;
-      height: 16px;
-      fill: currentColor;
-    }
-
-    .back-link {
-      display: inline-block;
-      margin-top: 1.8rem;
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 0.14rem;
-    }
-
-    .back-link:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-
-    .contact-shell {
-      padding: clamp(2.8rem, 6vw, 5rem) 0;
-    }
-
-    .contact-card {
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-      background: #fff;
-      padding: clamp(2rem, 5vw, 4rem) 0;
-    }
-
-    .contact-grid {
-      display: grid;
+      gap: 1.2rem;
       justify-items: center;
       text-align: center;
-      gap: 1.4rem;
     }
 
-    .contact-kicker {
+    .contact-title {
       font-size: 0.72rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: #7b716b;
-      margin-bottom: 0.25rem;
     }
 
-    .contact-line {
-      margin-top: 0.2rem;
-      font-size: clamp(1rem, 1.9vw, 1.3rem);
+    .contact-links {
+      display: grid;
+      gap: 1.1rem;
     }
 
-    .contact-line a {
-      border-bottom: 1px solid var(--line);
-    }
-
-    .contact-line a:hover {
-      color: var(--accent);
-      border-color: var(--accent);
+    .contact-row {
+      display: grid;
+      justify-items: center;
+      gap: 0.55rem;
     }
 
     .contact-icon-link {
@@ -450,399 +161,110 @@
       transition: color .2s ease, border-color .2s ease;
     }
 
-    .contact-icon-link:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-
     .contact-icon-link svg {
       width: 22px;
       height: 22px;
       fill: currentColor;
     }
 
-    .contact-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #7b716b;
-      margin-bottom: 0.3rem;
+    .contact-link-text {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: #3f3935;
+      transition: color .2s ease;
+    }
+
+    .contact-icon-link:hover,
+    .contact-icon-link:focus-visible,
+    .contact-link-text:hover,
+    .contact-link-text:focus-visible {
+      color: var(--accent);
+      outline: none;
+    }
+
+    .contact-icon-link:hover,
+    .contact-icon-link:focus-visible {
+      border-color: var(--accent);
     }
 
     .contact-address {
-      max-width: 34ch;
+      max-width: 42ch;
       color: var(--muted);
       line-height: 1.7;
-      font-size: clamp(0.98rem, 1.7vw, 1.2rem);
-    }
-
-    .contact-row {
-      display: grid;
-      justify-items: center;
-      gap: 0.7rem;
-    }
-
-    .contact-link-only {
-      display: none;
+      font-size: clamp(0.98rem, 1.7vw, 1.16rem);
     }
 
     .site-footer {
-      border-top: 1px solid var(--line);
-      padding: 0.85rem 0 1rem;
+      padding: 1rem 0 1.2rem;
       font-size: 0.74rem;
       letter-spacing: 0.11em;
       text-transform: uppercase;
       color: #7d726b;
     }
 
-    @media (max-width: 980px) {
-      .roster-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .artist-layout { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 760px) {
-      .nav-toggle { display: inline-flex; }
-      .site-nav {
-        position: absolute;
-        top: calc(100% + 1px);
-        right: 1.2rem;
-        background: #fff;
-        border: 1px solid var(--line);
-        border-radius: 10px;
-        min-width: 165px;
-        padding: 0.65rem;
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .site-nav.open { display: flex; }
-      .stats { grid-template-columns: 1fr; }
-      .stat + .stat { border-left: 0; border-top: 1px solid var(--line); }
-    }
-
-    @media (max-width: 620px) {
-      .roster-grid { grid-template-columns: 1fr; }
+    @media (max-width: 640px) {
+      .container { width: min(100% - 1.5rem, var(--max)); }
+      .copy p { font-size: 0.97rem; }
     }
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="logo-link" href="#home" data-nav="#home" aria-label="PB Management Home">
+      <a class="logo-link" href="#top" aria-label="PB Management Home">
         <img src="images/pb-logo.png" alt="PB Management" />
       </a>
-      <button class="nav-toggle" aria-label="Toggle navigation">Menu</button>
       <nav class="site-nav" aria-label="Main navigation">
-        <a href="#about" data-nav="#about">About</a>
-        <a href="#roster" data-nav="#roster">Roster</a>
-        <a href="#contact" data-nav="#contact">Contact</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section class="page" id="home" data-page="home">
-      <section class="hero">
-        <div class="container hero-grid">
-          <div class="hero-image-wrap">
-            <img class="hero-image" src="images/pb-logo.png" alt="PB Management logo" />
-          </div>
-          <h1>Forward-thinking full service boutique management.</h1>
-          <p class="lead">We connect the dots, build opportunities and deliver long-term results through focused direction, deal-making expertise and an international network.</p>
-          <p class="quote">“One song can change everything.”</p>
-          <div class="actions">
-            <a class="btn ghost" href="#contact" data-nav="#contact">Get In Touch</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="stats" aria-label="PB Management stats">
-        <div class="stat"><strong>30B+</strong><span>Streams across DSPs</span></div>
-        <div class="stat"><strong>80+</strong><span>Top 10s worldwide</span></div>
-        <div class="stat"><strong>300+</strong><span>Sync campaigns</span></div>
-      </section>
+  <main id="top">
+    <section class="hero container">
+      <img class="hero-logo" src="images/pb-logo.png" alt="PB Management logo" />
+      <h1>Forward-thinking full service boutique management.</h1>
     </section>
 
-    <section class="page" id="about" data-page="about">
-      <section class="section">
-        <div class="container copy">
-          <h2>About</h2>
-          <p>We are a forward thinking full service boutique company. We connect the dots and pride ourselves on a solid track record of deal-making, creating opportunities and are not scared of thinking outside the box to get results.</p>
-          <p>We think long term, provide focus, direction and business knowledge to the careers of our clients. We utilise our solid international network which ensures that all our clients are exposed to a wider audience around the world.</p>
-          <p>We are proud to have been involved with more than 30+ billion streams across DSPs, 80+ top 10’s around the world and 300+ sync campaigns.</p>
-          <p>We always focus on the quality of the music first, as we believe; "One song can change everything".</p>
-        </div>
-      </section>
+    <section id="about" class="section">
+      <div class="container copy">
+        <p>We are a forward thinking full service boutique company. We connect the dots and pride ourselves on a solid track record of deal-making, creating opportunities and are not scared of thinking outside the box to get results.</p>
+        <p>We think long term, provide focus, direction and business knowledge to the careers of our clients. We utilise our solid international network which ensures that all our clients are exposed to a wider audience around the world.</p>
+        <p>We are proud to have been involved with more than 30+ billion streams across DSPs, 80+ top 10’s around the world and 300+ sync campaigns.</p>
+        <p>We always focus on the quality of the music first, as we believe; "One song can change everything".</p>
+      </div>
     </section>
 
-    <section class="page" id="roster" data-page="roster">
-      <section class="section">
-        <div class="container">
-          <h2>Roster</h2>
-          <div class="roster-grid">
-            <article class="artist-card">
-              <a href="#alika" data-nav="#alika"><img src="images/Alika.JPG" alt="Alika" /></a>
-              <div class="artist-content">
-                <h3>Alika</h3>
-                <a class="detail-link" href="#alika" data-nav="#alika">Artist Details</a>
-              </div>
-            </article>
-
-            <article class="artist-card">
-              <a href="#carl-ryden" data-nav="#carl-ryden"><img src="images/Carl.JPG" alt="Carl Ryden" /></a>
-              <div class="artist-content">
-                <h3>Carl Ryden</h3>
-                <a class="detail-link" href="#carl-ryden" data-nav="#carl-ryden">Artist Details</a>
-              </div>
-            </article>
-
-            <article class="artist-card">
-              <a href="#robin-m" data-nav="#robin-m"><img src="images/RobinM.JPG" alt="Robin M" /></a>
-              <div class="artist-content">
-                <h3>Robin M</h3>
-                <a class="detail-link" href="#robin-m" data-nav="#robin-m">Artist Details</a>
-              </div>
-            </article>
+    <section id="contact" class="section">
+      <div class="container contact-wrap">
+        <p class="contact-title">PB Management</p>
+        <h2>Contact</h2>
+        <div class="contact-links">
+          <div class="contact-row">
+            <a class="contact-icon-link" href="mailto:info@pittbuhl.com" aria-label="Email PB Management">
+              <svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm0 2v.5l9 6 9-6V7H3Zm18 3-8.43 5.62a1 1 0 0 1-1.14 0L3 10v8h18v-8Z"/></svg>
+            </a>
+            <a class="contact-link-text" href="mailto:info@pittbuhl.com">info@pittbuhl.com</a>
+          </div>
+          <div class="contact-row">
+            <a class="contact-icon-link" href="https://www.instagram.com/pbmanagement/" target="_blank" rel="noopener" aria-label="PB Management Instagram">
+              <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 1.9A3.9 3.9 0 0 0 3.9 7.8v8.4a3.9 3.9 0 0 0 3.9 3.9h8.4a3.9 3.9 0 0 0 3.9-3.9V7.8a3.9 3.9 0 0 0-3.9-3.9H7.8Zm8.95 1.45a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.9a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2Z"/></svg>
+            </a>
+            <a class="contact-link-text" href="https://www.instagram.com/pbmanagement/" target="_blank" rel="noopener">instagram.com/pbmanagement</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-icon-link" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 5.08-7 13-7 13S5 14.08 5 9a7 7 0 0 1 7-7Zm0 2a5 5 0 0 0-5 5c0 3.3 3.8 8.6 5 10.2 1.2-1.6 5-6.9 5-10.2a5 5 0 0 0-5-5Zm0 2.5A2.5 2.5 0 1 1 9.5 9 2.5 2.5 0 0 1 12 6.5Z"/></svg>
+            </span>
+            <p class="contact-address">PB Management, 465C Hornsey Road, Unit 2, Office 10, London, N19 4DR, United Kingdom</p>
           </div>
         </div>
-      </section>
-    </section>
-
-    <section class="page" id="contact" data-page="contact">
-      <section class="contact-shell">
-        <div class="container">
-          <div class="contact-card">
-            <div class="contact-grid">
-              <p class="contact-kicker">Get In Touch</p>
-
-              <div class="contact-row">
-                <a class="contact-icon-link" href="mailto:info@pittbuhl.com" aria-label="Email PB Management">
-                  <svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm0 2v.5l9 6 9-6V7H3Zm18 3-8.43 5.62a1 1 0 0 1-1.14 0L3 10v8h18v-8Z"/></svg>
-                </a>
-                <p class="contact-line contact-link-only"><a href="mailto:info@pittbuhl.com">info@pittbuhl.com</a></p>
-              </div>
-
-              <div class="contact-row">
-                <p class="contact-label">Instagram</p>
-                <a class="contact-icon-link" href="https://www.instagram.com/pbmanagement/" target="_blank" rel="noopener" aria-label="PB Management Instagram">
-                  <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 1.9A3.9 3.9 0 0 0 3.9 7.8v8.4a3.9 3.9 0 0 0 3.9 3.9h8.4a3.9 3.9 0 0 0 3.9-3.9V7.8a3.9 3.9 0 0 0-3.9-3.9H7.8Zm8.95 1.45a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.9a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2Z"/></svg>
-                </a>
-                <p class="contact-line contact-link-only"><a href="https://www.instagram.com/pbmanagement/" target="_blank" rel="noopener">instagram.com/pbmanagement</a></p>
-              </div>
-
-              <div class="contact-row">
-                <p class="contact-label">Find Us</p>
-                <a class="contact-icon-link" href="#" aria-label="PB Management Address">
-                  <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 5.08-7 13-7 13S5 14.08 5 9a7 7 0 0 1 7-7Zm0 2a5 5 0 0 0-5 5c0 3.3 3.8 8.6 5 10.2 1.2-1.6 5-6.9 5-10.2a5 5 0 0 0-5-5Zm0 2.5A2.5 2.5 0 1 1 9.5 9 2.5 2.5 0 0 1 12 6.5Z"/></svg>
-                </a>
-                <p class="contact-address">Address: Ulu Records, 465C Hornsey Road, Unit 2, Office 10, London, N19 4DR, United Kingdom</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </section>
-
-    <section class="page" id="alika" data-page="alika">
-      <section class="artist-page">
-        <div class="container artist-layout">
-          <div class="artist-image"><img src="images/Alika.JPG" alt="Alika" /></div>
-          <article>
-            <h2>Alika</h2>
-            <p class="lead" style="margin-top:.8rem;">Alika is a rapper, singer, songwriter and engineer with a profound love for storytelling &amp; a dedicated approach to lyricism. Her upbringing in West London, background in rap and love for all music, especially R&amp;B, dance and pop, have shaped her into a versatile multi-genre songwriter with a unique skill set that makes her a strong addition to a wide range of sessions. With award-winning, multi-platinum-selling and chart-topping credits to her name, she brings both creativity and experience.</p>
-
-            <section class="block">
-              <h3>Recent Cuts</h3>
-              <p>Armin Van Buuren, Mahalia, Freaks &amp; Geeks, Fish56Octagon, CLiQ, Punctual, Tom Westy, TS7, Steve Aoki, Dombresky, KREAM, Human Family, Bradeazy, Biscit, Dreya Mac, A!ms x Julian Marley.</p>
-            </section>
-
-            <section class="block">
-              <h3>Recent Sessions</h3>
-              <p>Carl Ryden, Raphaella, YK, Jay Weathers, Jin Jin, Paul Harris, Poppy Baskcomb, Rob Harvey, AR/CO, Ella Mayjor, PARX, Sky Adams, Carla Monroe, James Hurr, Tinie Tempah, Tom Neville and more.</p>
-            </section>
-
-            <section class="block">
-              <h3>Playlist</h3>
-              <iframe class="playlist-embed" src="https://open.spotify.com/embed/playlist/37i9dQZF1DZ06evO14yHGr?utm_source=generator" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Alika Playlist"></iframe>
-              <div class="inline-links"><a href="https://open.spotify.com/playlist/37i9dQZF1DZ06evO14yHGr?si=9a66f780dba94bc9" target="_blank" rel="noopener">Open in Spotify</a></div>
-            </section>
-
-            <section class="block">
-              <h3>Socials</h3>
-              <div class="socials">
-                <a href="https://instagram.com/therealalika" target="_blank" rel="noopener" aria-label="Alika Instagram">
-                  <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 1.9A3.9 3.9 0 0 0 3.9 7.8v8.4a3.9 3.9 0 0 0 3.9 3.9h8.4a3.9 3.9 0 0 0 3.9-3.9V7.8a3.9 3.9 0 0 0-3.9-3.9H7.8Zm8.95 1.45a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.9a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2Z"/></svg>
-                </a>
-                <a href="https://www.tiktok.com/@alikaofficial" target="_blank" rel="noopener" aria-label="Alika TikTok">
-                  <svg viewBox="0 0 24 24"><path d="M15.5 2c.4 1.9 1.4 3.3 3 4.2 1 .6 2.1.9 3.5.9v3.2a9.6 9.6 0 0 1-4.6-1.2v6.4a6.5 6.5 0 1 1-5.7-6.5v3.3a3.3 3.3 0 1 0 2.4 3.2V2h1.4Z"/></svg>
-                </a>
-                <a href="https://open.spotify.com/artist/1U3n3wACHLjc8sS1obMEuf?si=Gdl7JNX7ST2naiPDR_gpCQ" target="_blank" rel="noopener" aria-label="Alika Spotify">
-                  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.59 14.44a.8.8 0 0 1-1.1.26c-3-1.8-6.78-2.2-11.22-1.18a.8.8 0 1 1-.35-1.55c4.86-1.11 9.03-.66 12.39 1.34.38.23.5.72.28 1.13Zm1.57-2.6a1 1 0 0 1-1.36.33c-3.43-2.11-8.65-2.73-12.7-1.5a1 1 0 1 1-.58-1.9c4.63-1.4 10.38-.72 14.33 1.7.47.29.62.9.31 1.37Zm.13-2.72c-4.1-2.44-10.86-2.66-14.78-1.44a1.2 1.2 0 1 1-.71-2.29c4.5-1.39 12-.98 16.72 1.82a1.2 1.2 0 1 1-1.23 1.91Z"/></svg>
-                </a>
-              </div>
-            </section>
-
-            <a class="back-link" href="#roster" data-nav="#roster">Back to Roster</a>
-          </article>
-        </div>
-      </section>
-    </section>
-
-    <section class="page" id="carl-ryden" data-page="carl-ryden">
-      <section class="artist-page">
-        <div class="container artist-layout">
-          <div class="artist-image"><img src="images/Carl.JPG" alt="Carl Ryden" /></div>
-          <article>
-            <h2>Carl Ryden</h2>
-            <p class="lead" style="margin-top:.8rem;">LA-based and originally from Sweden, Carl Ryden is a BMI Award-winning, Grammy-nominated, multi-platinum-selling and chart-topping producer, songwriter and musician who has established himself as one of the industry’s most respected talents. Working across both sides of the Atlantic, Carl has collaborated with world-renowned artists across pop, dance and electronic music.</p>
-            <p class="lead" style="margin-top:.9rem;">His credits include Kylie Minogue’s “Just Imagine” from her UK and Australian No.1 Gold-certified album, Solardo’s multi-million-streaming club anthem “Power”, Ricky Martin and Maluma’s Platinum-certified and Grammy-nominated “Vente Pa Ca”, Sigma’s UK Gold-certified album, and Steps’ UK No.1 “Scared Of The Dark” from their Gold-certified album, among many others.</p>
-            <p class="lead" style="margin-top:.9rem;">To date, Carl has contributed to over 10 billion streams worldwide, alongside multiple Gold, Platinum and Diamond-certified records, chart-performing releases, award-winning and nominated projects, and numerous global sync placements.</p>
-            <p class="lead" style="margin-top:.9rem;">Known for his work ethic and professionalism, Carl is highly regarded among artists, labels and managers worldwide. Consistent in both creativity and delivery, he continues to surpass expectations across every project he works on.</p>
-
-            <section class="block">
-              <h3>Recent Cuts</h3>
-              <p>Galantis, ICONA Pop, Kylie, Anabel Englund, MK, Forest Blakk, Ricky Martin, Maluma, Sigma, David Guetta, Brooke Candy, Blondfire, Lola Lennox, Revé, TWICE, Solardo, Robin M, Steve Aoki, Alok, NGHTMRE, Gloria Trevi and more.</p>
-            </section>
-
-            <section class="block">
-              <h3>Recent Sessions</h3>
-              <p>Lawrie Martin, Kamille, Paul Harris, Meghan Cottone, Jensen Vaughn, Rory, Dragonette, Raphaella, Will Simms, Bipolar Sunshine, Moss Kena and more.</p>
-            </section>
-
-            <section class="block">
-              <h3>Playlist</h3>
-              <iframe class="playlist-embed" src="https://open.spotify.com/embed/playlist/5WrV19E0MHY87lYqRUXFZ2?utm_source=generator" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" title="Carl Ryden Playlist"></iframe>
-              <div class="inline-links"><a href="https://open.spotify.com/playlist/5WrV19E0MHY87lYqRUXFZ2?si=9a0576bf359a405f" target="_blank" rel="noopener">Open in Spotify</a></div>
-            </section>
-
-            <section class="block">
-              <h3>Social</h3>
-              <div class="socials">
-                <a href="https://www.instagram.com/rydencarl/" target="_blank" rel="noopener" aria-label="Carl Ryden Instagram">
-                  <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 1.9A3.9 3.9 0 0 0 3.9 7.8v8.4a3.9 3.9 0 0 0 3.9 3.9h8.4a3.9 3.9 0 0 0 3.9-3.9V7.8a3.9 3.9 0 0 0-3.9-3.9H7.8Zm8.95 1.45a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.9a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2Z"/></svg>
-                </a>
-              </div>
-            </section>
-
-            <a class="back-link" href="#roster" data-nav="#roster">Back to Roster</a>
-          </article>
-        </div>
-      </section>
-    </section>
-
-    <section class="page" id="robin-m" data-page="robin-m">
-      <section class="artist-page">
-        <div class="container artist-layout">
-          <div class="artist-image"><img src="images/RobinM.JPG" alt="Robin M" /></div>
-          <article>
-            <h2>Robin M</h2>
-            <p class="lead" style="margin-top:.8rem;">Recognised talent Robin Michelangelo aka Robin M is a London-based DJ and producer known for his distinctive fusion of deep, percussive and melodic house. Drawing inspiration from his British, Italian and Ethiopian heritage, and shaped by London’s vibrant music scene, Robin’s sound is authentic and forward-thinking.</p>
-            <p class="lead" style="margin-top:.9rem;">Founder of ULU Records, a fast-rising underground label and community, Robin has guided the label to chart-topping releases on Traxsource and Beatport, earning platinum and gold certifications. In 2024, he launched the ULU Rising event series, delivering intimate and full capacity sized sold-out events.</p>
-            <p class="lead" style="margin-top:.9rem;">Robin has also collaborated with Bedouin and released music on their respected label Human By Default as well as Diplo’s Higher Ground. His tracks are played in top clubs and festivals, supported by BBC Radio 1 and tastemaker DJs including Black Coffee, Bedouin, Dennis Cruz and many more.</p>
-            <p class="lead" style="margin-top:.9rem;">As a DJ, Robin is known for delivering immersive journeys and a strong understanding of the floor, blending his own productions with carefully curated records. He has performed at places ranging from Bedouin’s SAGA event, Pacha Ibiza, Blue Marlin, Club Chinois, Nyege Nyege Festival, and headlined shows across Kenya, South Africa and the UK, including the legendary Fabric.</p>
-            <p class="lead" style="margin-top:.9rem;">Robin has shared stages with luminaries such as Bedouin, Shimza, Pete Tong, Reznik (Keinemusik), Nandu, Notre Dame, Tripolism and Caiiro. Driven by a passion for music and connection, he creates moments that resonate long after the last track fades.</p>
-
-            <section class="block">
-              <h3>Highlights</h3>
-              <p>Performed at internationally recognised venues and events including Fabric, Pacha Ibiza, Club Chinois, Blue Marlin and Bedouin’s SAGA. Released music on Human By Default and Diplo’s Higher Ground, with support from Black Coffee, Bedouin, Dennis Cruz and BBC Radio 1. Founder of ULU Records and creator of the ULU Rising event series.</p>
-            </section>
-
-            <section class="block">
-              <h3>Achievements</h3>
-              <p>#1 Traxsource Album Chart<br>#1 Traxsource Afro House Chart<br>#1 Beatport Afro Releases<br>#1 Beatport Releases<br>#1 UK Club Chart<br>#1 UK Black Music Chart<br>#2 Beatport Afro Chart<br>#2 Beatport Hype Afro Artist<br>6 months in Beatport Afro Top 5<br>60M+ streams across DSPs<br>5.5M+ TikTok views<br>4.5M+ Instagram views<br>Multiple BBC Radio 1 &amp; 1Xtra guest mixes featured</p>
-            </section>
-
-            <section class="block">
-              <h3>Website</h3>
-              <div class="inline-links">
-                <a href="https://www.robinm.co.uk" target="_blank" rel="noopener">robinm.co.uk</a>
-              </div>
-            </section>
-
-            <section class="block">
-              <h3>Socials</h3>
-              <div class="socials">
-                <a href="https://www.instagram.com/robinmmusic" target="_blank" rel="noopener" aria-label="Robin M Instagram">
-                  <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 1.9A3.9 3.9 0 0 0 3.9 7.8v8.4a3.9 3.9 0 0 0 3.9 3.9h8.4a3.9 3.9 0 0 0 3.9-3.9V7.8a3.9 3.9 0 0 0-3.9-3.9H7.8Zm8.95 1.45a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.9a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2Z"/></svg>
-                </a>
-                <a href="https://www.youtube.com/channel/UC9-haEDKntnUyEoW09wsRng" target="_blank" rel="noopener" aria-label="Robin M YouTube">
-                  <svg viewBox="0 0 24 24"><path d="M21.6 7.2a2.9 2.9 0 0 0-2-2C17.8 4.7 12 4.7 12 4.7s-5.8 0-7.6.5a2.9 2.9 0 0 0-2 2A30 30 0 0 0 2 12a30 30 0 0 0 .4 4.8 2.9 2.9 0 0 0 2 2c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a2.9 2.9 0 0 0 2-2A30 30 0 0 0 22 12a30 30 0 0 0-.4-4.8ZM10.1 15.2V8.8L15.7 12l-5.6 3.2Z"/></svg>
-                </a>
-                <a href="https://open.spotify.com/artist/2XOzTjiQuB1TeW6JQKU3j7?si=tXI2v_w4T12QXzpkqwsBeQ" target="_blank" rel="noopener" aria-label="Robin M Spotify">
-                  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.59 14.44a.8.8 0 0 1-1.1.26c-3-1.8-6.78-2.2-11.22-1.18a.8.8 0 1 1-.35-1.55c4.86-1.11 9.03-.66 12.39 1.34.38.23.5.72.28 1.13Zm1.57-2.6a1 1 0 0 1-1.36.33c-3.43-2.11-8.65-2.73-12.7-1.5a1 1 0 1 1-.58-1.9c4.63-1.4 10.38-.72 14.33 1.7.47.29.62.9.31 1.37Zm.13-2.72c-4.1-2.44-10.86-2.66-14.78-1.44a1.2 1.2 0 1 1-.71-2.29c4.5-1.39 12-.98 16.72 1.82a1.2 1.2 0 1 1-1.23 1.91Z"/></svg>
-                </a>
-              </div>
-            </section>
-
-            <a class="back-link" href="#roster" data-nav="#roster">Back to Roster</a>
-          </article>
-        </div>
-      </section>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">© PB Management</div>
   </footer>
-
-  <script>
-    (function () {
-      var navToggle = document.querySelector('.nav-toggle');
-      var nav = document.querySelector('.site-nav');
-      var pages = document.querySelectorAll('.page');
-      var links = document.querySelectorAll('[data-nav]');
-
-      function getTargetFromHash() {
-        var hash = window.location.hash || '#home';
-        var id = hash.replace('#', '');
-        if (!document.getElementById(id)) return 'home';
-        return id;
-      }
-
-      function showPage(id) {
-        pages.forEach(function (page) {
-          page.classList.toggle('active', page.id === id);
-        });
-
-        var topNavLinks = document.querySelectorAll('.site-nav a[data-nav]');
-        topNavLinks.forEach(function (a) {
-          var aHash = a.getAttribute('data-nav');
-          a.classList.toggle('active', aHash === '#' + id);
-        });
-
-        if (nav) nav.classList.remove('open');
-        window.scrollTo({ top: 0, behavior: 'auto' });
-      }
-
-      function goToHash(hash) {
-        if (window.location.hash === hash) {
-          showPage(getTargetFromHash());
-        } else {
-          window.location.hash = hash;
-        }
-      }
-
-      links.forEach(function (link) {
-        link.addEventListener('click', function (event) {
-          var hash = link.getAttribute('data-nav');
-          if (!hash) return;
-          event.preventDefault();
-          goToHash(hash);
-        });
-      });
-
-      if (navToggle && nav) {
-        navToggle.addEventListener('click', function () {
-          nav.classList.toggle('open');
-        });
-      }
-
-      window.addEventListener('hashchange', function () {
-        showPage(getTargetFromHash());
-      });
-
-      showPage(getTargetFromHash());
-    })();
-  </script>
 </body>
 </html>
