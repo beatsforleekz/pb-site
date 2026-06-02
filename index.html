@@ -8,11 +8,12 @@
   <style>
     :root {
       --bg: #ffffff;
-      --text: #141414;
+      --text: #151312;
       --muted: #5f5a56;
-      --accent: #C3ADA2;
-      --line: #e9e3df;
-      --max: 980px;
+      --accent: #c3ada2;
+      --line: #e8e1dc;
+      --max: 1200px;
+      --content: 820px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -22,11 +23,12 @@
       color: var(--text);
       font-family: "Helvetica Neue", "Avenir Next", Avenir, "Segoe UI", sans-serif;
       -webkit-font-smoothing: antialiased;
-      scroll-behavior: smooth;
     }
 
-    #about, #contact {
-      scroll-margin-top: 84px;
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     a { color: inherit; text-decoration: none; }
@@ -41,12 +43,13 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(255,255,255,0.97);
-      backdrop-filter: blur(6px);
+      background: rgba(255, 255, 255, 0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(232, 225, 220, 0.8);
     }
 
     .header-inner {
-      min-height: 68px;
+      min-height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -54,210 +57,128 @@
     }
 
     .logo-link img {
-      width: clamp(62px, 8vw, 84px);
+      width: clamp(64px, 7vw, 86px);
       height: auto;
     }
 
     .site-nav {
       display: flex;
       align-items: center;
-      gap: 1.1rem;
+      gap: clamp(1rem, 2vw, 1.6rem);
     }
 
     .site-nav a {
-      font-size: 0.68rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #4f4945;
-      border-bottom: 1px solid transparent;
-      padding-bottom: 0.16rem;
-      transition: color .2s ease, border-color .2s ease;
-    }
-
-    .site-nav a:hover,
-    .site-nav a:focus-visible {
-      color: var(--accent);
-      border-color: var(--accent);
-      outline: none;
-    }
-
-    .hero {
-      padding: clamp(1.6rem, 3.2vw, 2.4rem) 0 clamp(0.35rem, 1.2vw, 0.7rem);
-      display: grid;
-      justify-items: center;
-      text-align: center;
-      gap: 0.7rem;
-    }
-
-    .hero-logo {
-      width: min(100%, 220px);
-    }
-
-    h1, h2 {
-      font-weight: 400;
-      letter-spacing: 0.01em;
-    }
-
-    h1 {
-      font-size: clamp(1.1rem, 2vw, 1.6rem);
-      line-height: 1.25;
-    }
-
-    h2 {
-      font-size: clamp(1rem, 1.6vw, 1.22rem);
-    }
-
-    .section {
-      padding: clamp(2rem, 5vw, 3.6rem) 0;
-    }
-
-    .copy {
-      max-width: 78ch;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .copy p {
-      margin-top: 1rem;
-      color: var(--muted);
-      line-height: 1.82;
-      font-size: 1rem;
-    }
-
-    .contact-wrap {
-      display: grid;
-      gap: 1.2rem;
-      justify-items: center;
-      text-align: center;
-    }
-
-    .contact-title {
       font-size: 0.72rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: #7b716b;
+      color: #5e5651;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 0.18rem;
+      transition: color 0.2s ease, border-color 0.2s ease;
     }
 
-    .contact-links {
-      display: grid;
-      gap: 1.1rem;
-    }
-
-    .contact-row {
-      display: grid;
-      justify-items: center;
-      gap: 0.55rem;
-    }
-
-    .contact-icon-link {
-      width: 52px;
-      height: 52px;
-      border: 1px solid var(--line);
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: #4f4945;
-      transition: color .2s ease, border-color .2s ease;
-    }
-
-    .contact-icon-link svg {
-      width: 22px;
-      height: 22px;
-      fill: currentColor;
-    }
-
-    .contact-link-text {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: #3f3935;
-      transition: color .2s ease;
-    }
-
-    .contact-icon-link:hover,
-    .contact-icon-link:focus-visible,
-    .contact-link-text:hover,
-    .contact-link-text:focus-visible {
+    .site-nav a:hover,
+    .site-nav a:focus-visible,
+    .site-nav a.active {
       color: var(--accent);
+      border-color: var(--accent);
       outline: none;
     }
 
-    .contact-icon-link:hover,
-    .contact-icon-link:focus-visible {
-      border-color: var(--accent);
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
     }
 
-    .contact-address {
-      max-width: 42ch;
+    .home-shell {
+      width: min(100% - 2.5rem, var(--content));
+      margin: 0 auto;
+      padding: clamp(2rem, 6vw, 5rem) 0;
+    }
+
+    .home-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #7a7069;
+      margin-bottom: 1.7rem;
+      text-align: center;
+    }
+
+    .home-copy {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: clamp(2rem, 5vw, 3.25rem) 0;
+    }
+
+    .home-copy p {
+      text-align: center;
       color: var(--muted);
-      line-height: 1.7;
-      font-size: clamp(0.98rem, 1.7vw, 1.16rem);
+      line-height: 1.82;
+      font-size: 1rem;
+      margin-top: 1rem;
+    }
+
+    .home-copy p:first-child {
+      margin-top: 0;
     }
 
     .site-footer {
-      padding: 1rem 0 1.2rem;
-      font-size: 0.74rem;
-      letter-spacing: 0.11em;
+      padding: 1.05rem 0 1.25rem;
+      border-top: 1px solid var(--line);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #7d726b;
+      color: #7e736c;
     }
 
     @media (max-width: 640px) {
-      .container { width: min(100% - 1.5rem, var(--max)); }
-      .copy p { font-size: 0.97rem; }
+      .container,
+      .home-shell {
+        width: min(100% - 1.5rem, var(--max));
+      }
+
+      .header-inner {
+        min-height: 70px;
+      }
+
+      .site-nav {
+        gap: 0.85rem;
+      }
+
+      .site-nav a {
+        font-size: 0.66rem;
+      }
+
+      .home-copy p {
+        font-size: 0.97rem;
+      }
     }
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="logo-link" href="#top" aria-label="PB Management Home">
+      <a class="logo-link" href="index.html" aria-label="PB Management Home">
         <img src="images/pb-logo.png" alt="PB Management" />
       </a>
       <nav class="site-nav" aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a class="active" href="index.html">Home</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main id="top">
-    <section class="hero container">
-      <img class="hero-logo" src="images/pb-logo.png" alt="PB Management logo" />
-      <h1>Forward-thinking full service boutique management.</h1>
-    </section>
-
-    <section id="about" class="section">
-      <div class="container copy">
+  <main>
+    <section class="home-shell">
+      <p class="home-label">PB Management</p>
+      <div class="home-copy">
         <p>We are a forward thinking full service boutique company. We connect the dots and pride ourselves on a solid track record of deal-making, creating opportunities and are not scared of thinking outside the box to get results.</p>
         <p>We think long term, provide focus, direction and business knowledge to the careers of our clients. We utilise our solid international network which ensures that all our clients are exposed to a wider audience around the world.</p>
         <p>We are proud to have been involved with more than 30+ billion streams across DSPs, 80+ top 10’s around the world and 300+ sync campaigns.</p>
         <p>We always focus on the quality of the music first, as we believe; "One song can change everything".</p>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <div class="container contact-wrap">
-        <p class="contact-title">PB Management</p>
-        <div class="contact-links">
-          <div class="contact-row">
-            <a class="contact-icon-link" href="mailto:info@pittbuhl.com" aria-label="Email PB Management">
-              <svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm0 2v.5l9 6 9-6V7H3Zm18 3-8.43 5.62a1 1 0 0 1-1.14 0L3 10v8h18v-8Z"/></svg>
-            </a>
-            <a class="contact-link-text" href="mailto:info@pittbuhl.com">info@pittbuhl.com</a>
-          </div>
-          <div class="contact-row">
-            <a class="contact-icon-link" href="https://www.instagram.com/pbmanagement/" target="_blank" rel="noopener" aria-label="PB Management Instagram">
-              <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 1.9A3.9 3.9 0 0 0 3.9 7.8v8.4a3.9 3.9 0 0 0 3.9 3.9h8.4a3.9 3.9 0 0 0 3.9-3.9V7.8a3.9 3.9 0 0 0-3.9-3.9H7.8Zm8.95 1.45a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.9a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2Z"/></svg>
-            </a>
-            <a class="contact-link-text" href="https://www.instagram.com/pbmanagement/" target="_blank" rel="noopener">@pbmanagement</a>
-          </div>
-          <div class="contact-row">
-            <span class="contact-icon-link" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 5.08-7 13-7 13S5 14.08 5 9a7 7 0 0 1 7-7Zm0 2a5 5 0 0 0-5 5c0 3.3 3.8 8.6 5 10.2 1.2-1.6 5-6.9 5-10.2a5 5 0 0 0-5-5Zm0 2.5A2.5 2.5 0 1 1 9.5 9 2.5 2.5 0 0 1 12 6.5Z"/></svg>
-            </span>
-            <p class="contact-address">PB Management, 465C Hornsey Road, Unit 2, Office 10, London, N19 4DR, United Kingdom</p>
-          </div>
-        </div>
       </div>
     </section>
   </main>
